@@ -1,5 +1,6 @@
 import cv2  # 导入OpenCV库，用于计算机视觉和图像处理
 import numpy as np  # 导入NumPy库，用于数值计算和数组操作
+from numpy.ma.extras import dstack
 
 img = cv2.imread(r"./img/login.png")  # 读取指定路径下的图像文件，存储到img变量中
 
@@ -15,7 +16,16 @@ img = cv2.imread(r"./img/login.png")  # 读取指定路径下的图像文件，�
 # dst = cv2.blur(img, (5, 5))
 
 # 使用高斯滤波对图像进行滤波操作
-dst = cv2.GaussianBlur(img, (5, 5), 1)
+# dst = cv2.GaussianBlur(img, (5, 5), 1)
+# 使用中值滤波对图像进行滤波操作  呼叫噪音
+# dst = cv2.medianBlur(img, 5)
+
+# 使用双边滤波对图像进行滤波操作  美颜
+# dst = cv2.bilateralFilter(img, 9, 75, 75)
+
+
+
+
 
 cv2.imshow("img", img)  # 显示原始图像，窗口标题为"img"
 cv2.imshow("dst", dst)  # 显示滤波后图像，窗口标题为"dst"
