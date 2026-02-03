@@ -28,6 +28,6 @@ img = cv2.imread(r"./img/login.png")  # 读取指定路径下的图像文件，�
 
 
 cv2.imshow("img", img)  # 显示原始图像，窗口标题为"img"
-cv2.imshow("dst", dst)  # 显示滤波后图像，窗口标题为"dst"
+# cv2.imshow("dst", dst)  # 显示滤波后图像，窗口标题为"dst"
 cv2.waitKey(0)  # 等待按键事件，0表示无限等待直到有按键输入
 cv2.destroyAllWindows()  # 关闭所有OpenCV创建的窗口
