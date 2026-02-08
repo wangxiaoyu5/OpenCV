@@ -9,12 +9,6 @@ cap = cv2.VideoCapture('./img/vtest.avi')
 mog  = cv2.bgsegm.createBackgroundSubtractorGMG(10)
 
 
-
-
-
-
-
-
 while True:
     ret, frame = cap.read()
     fgmask = mog.apply(frame)

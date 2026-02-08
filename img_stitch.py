@@ -24,7 +24,8 @@ def stitch_image(img1, img2, H):
     result_dims = np.concatenate((img2_dims, img1_transform), axis=0)
 
     # 获取边界坐标
-    [x_min, y_min] = np.int32(result_dims.min(axis=0).ravel() - 0.5)
+    [x_min, y_min] \
+        = np.int32(result_dims.min(axis=0).ravel() - 0.5)
     [x_max, y_max] = np.int32(result_dims.max(axis=0).ravel() + 0.5)
 
     # 计算平移距离

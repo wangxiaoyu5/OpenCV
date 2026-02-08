@@ -3,8 +3,8 @@ import numpy as np
 
 
 # img = cv2.imread(r"./img/chess.png")
-img1 = cv2.imread(r"./img/opencv_search.png")
-img2 = cv2.imread(r"./img/opencv_orig.png")
+img1 = cv2.imread(r"./img/box.png")
+img2 = cv2.imread(r"./img/box_in_scene.png")
 # 灰度化
 # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 g1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -45,9 +45,36 @@ cv2.imshow("img", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
+img = cv2.imread(r"./img/chess.png")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+sift = cv2.SIFT_create()
+kp = sift.detect(gray, None)
+# 检测关键点
+img = cv2.drawKeypoints(gray, kp, img)
+
+cv2.imshow('drawKeypoints', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+# 检测描述符
+kp, des = sift.compute(gray, kp)
 
 
 
+#### k对最佳匹配
+
+bf = cv2.BFMatcher()
+matches = bf.knnMatch(des1, des2, k=2)
+
+good = []
+for m, n in matches:
+    if m.distance < 0.75 * n.distance:
+        good.append([m])
+
+img3 = cv2.drawMatchesKnn(img1,kp1,img2,kp2,good,None,flags=2)
+
+cv2.imshow('img3',img3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 
 
